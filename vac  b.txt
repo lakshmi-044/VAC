@@ -1,0 +1,24 @@
+import pandas as pd
+import numpy as np
+
+data = pd.read_csv("input_data.csv")
+
+# Calculate mean, median, min, max, and range
+mean = np.mean(data)
+median = np.median(data)
+min_value = np.min(data)
+max_value = np.max(data)
+range_value = np.ptp(data)
+
+# Create a dictionary of summary statistics
+summary_stats = {
+    "Mean": mean,
+    "Median": median,
+    "Minimum": min_value,
+    "Maximum": max_value,
+    "Range": range_value
+}
+
+# Print the summary statistics
+for stat, value in summary_stats.items():
+    print(stat + ": " + str(value))
