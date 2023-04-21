@@ -1,0 +1,17 @@
+import rasa.utils.io
+from rasa.core.agent import Agent
+
+# Load the Rasa model
+model_path = rasa.utils.io.model_path_from_uri("https://github.com/RasaHQ/rasa-demo/blob/main/models/20211015-204139.tar.gz")
+agent = Agent.load(model_path)
+
+# Define the chatbot's functionality
+def get_response(user_input):
+    responses = agent.handle_text(user_input)
+    return responses[0]['text']
+
+# Test the chatbot
+while True:
+    user_input = input("You: ")
+    response = get_response(user_input)
+    print("Bot: ", response)
